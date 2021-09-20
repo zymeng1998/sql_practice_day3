@@ -1,0 +1,23 @@
+1.     In SQL Server, assuming you can find the result by using both joins and subqueries, which one would you prefer to use and why?
+Generally speaking join is better, because the join clause would filter the data on join conditions, and thus, reduce the amount of rows selected;
+however, a sub-query would load all data from the selected list even though they wont all be used.
+
+2.     What is CTE and when to use it?
+CTE is called common table expression. It is a isolated, logical building blocks. We use it when we build reallly complex queries, or recursive ones.
+
+3.     What are Table Variables? What is their scope and where are they created in SQL Server?
+It is a variable that save a temporary table in tempdb, which does not have indices or Foreign keys.
+
+4.     What is the difference between DELETE and TRUNCATE? Which one will have better performance and why?
+Truncate reseeds identity values, whereas delete doesn't. 
+Truncate removes all records and doesn't fire triggers. 
+Truncate is faster and use less transaction log. 
+Cannot truncate a table when it is referenced by a foreign key or are used in replication or with indexed views.
+
+5.     What is Identity column? How does DELETE and TRUNCATE affect it?
+Identity Column is a special type of column that is used to automatically generate key values based on a provided seed (starting point) and increment.
+Truncate reseeds identity values, whereas delete doesn't. 
+
+6.     What is difference between “delete from table_name” and “truncate table table_name”?
+The DELETE statement removes rows one at a time and records an entry in the transaction log for each deleted row.
+TRUNCATE TABLE removes the data by deallocating the data pages used to store the table data and records only the page deallocations in the transaction log.
